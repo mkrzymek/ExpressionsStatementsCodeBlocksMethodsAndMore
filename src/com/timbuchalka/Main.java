@@ -6,7 +6,8 @@ public class Main {
 //        expressions();
 //        statementsWhitespacesAndIndentation();
 //        CodeBlocksAndTheIfThenElseControlStatements();
-        methodsInJava();
+//        methodsInJava();
+        methodOverloading();
     }
 
     private static void expressions() {
@@ -61,13 +62,13 @@ public class Main {
 
     private static void methodsInJava() {
 
-        int highScore = calculateScore(true, 800, 5, 100);
+        int highScore = calculateScore1(true, 800, 5, 100);
         System.out.println("final score " + highScore);
-        highScore = calculateScore(true, 10000, 8, 200);
+        highScore = calculateScore1(true, 10000, 8, 200);
         System.out.println("final score " + highScore);
     }
 
-    public static int calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
+    public static int calculateScore1(boolean gameOver, int score, int levelCompleted, int bonus) {
 
         if (gameOver) {
             int finalScore = score + (levelCompleted * bonus);
@@ -77,5 +78,27 @@ public class Main {
         }
 
         return -1;
+    }
+
+    public static void methodOverloading() {
+        int newScore = calculateScore2("Tim", 500);
+        System.out.println("New score is " + newScore);
+        calculateScore2(600);
+        calculateScore2();
+    }
+
+    public static int calculateScore2(String playerName, int score) {
+        System.out.println("Player " + playerName + " scored " + score + " points");
+        return score * 1000;
+    }
+
+    public static int calculateScore2(int score) {
+        System.out.println("Unnamed player scored " + score + " points");
+        return score * 1000;
+    }
+
+    public static int calculateScore2() {
+        System.out.println("Unnamed player scored no player score");
+        return 0;
     }
 }
